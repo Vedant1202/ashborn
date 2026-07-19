@@ -1,0 +1,36 @@
+{
+  "name": "ashborn-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Runtime security observability for AI agents",
+  "license": "MIT",
+  "packageManager": "pnpm@11.8.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "changeset": "changeset"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2",
+    "@commitlint/cli": "^19",
+    "@commitlint/config-conventional": "^19",
+    "@eslint/js": "^9",
+    "@types/node": "^24",
+    "eslint": "^9",
+    "prettier": "^3",
+    "tsup": "^8",
+    "turbo": "^2",
+    "typescript": "^5",
+    "typescript-eslint": "^8",
+    "vitest": "^3"
+  }
+}

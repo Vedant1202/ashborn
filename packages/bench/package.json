@@ -1,0 +1,24 @@
+{
+  "name": "@ashborn/bench",
+  "version": "0.0.0",
+  "description": "Offline replay harness and false-positive scorecard for Ashborn",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist"],
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean --sourcemap",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ashborn/core": "workspace:*"
+  }
+}

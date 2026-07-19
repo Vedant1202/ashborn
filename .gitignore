@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# model weights are downloaded and cached at runtime, never committed
+.models/
+*.onnx
+
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example

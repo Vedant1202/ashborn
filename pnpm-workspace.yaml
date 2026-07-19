@@ -1,0 +1,8 @@
+packages:
+  - 'packages/*'
+  - 'examples/*'
+
+# esbuild ships a platform-specific binary and needs its install script to run.
+# It is the build engine behind tsup and vitest.
+allowBuilds:
+  esbuild: true
