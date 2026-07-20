@@ -14,6 +14,19 @@ export type Provenance = 'trusted' | 'untrusted' | 'unknown';
 /** Where the tool being called lives. */
 export type ToolSource = 'local-tool' | 'mcp-server';
 
+/**
+ * A tool's advertised definition, as an agent or MCP server presents it.
+ *
+ * Unlike tool call content, a definition is authored by the developer or server
+ * rather than the user, so it is retained in full for comparison rather than
+ * hashed for redaction.
+ */
+export interface ToolDefinition {
+  name: string;
+  description?: string;
+  schema?: unknown;
+}
+
 /** A conversation message, normalized across agent frameworks. */
 export interface NormalizedMessage {
   role: 'system' | 'user' | 'assistant' | 'tool';

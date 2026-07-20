@@ -9,7 +9,10 @@ import * as api from './index.js';
  */
 const EXPECTED_RUNTIME_EXPORTS = [
   'annotateUntrustedDataEgress',
+  'createDriftBaseline',
   'createLedger',
+  'inspectDefinition',
+  'pinDefinition',
   'recordEvent',
   'resolveToolRoles',
   'runDetector',
