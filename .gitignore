@@ -13,3 +13,6 @@ coverage/
 .env
 .env.*
 !.env.example
+
+# throwaway spikes and experiments; never part of the build
+trial/
