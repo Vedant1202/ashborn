@@ -5,4 +5,6 @@
  * the false-positive scorecard. No network access and no live model calls.
  */
 
-export { createLedger as createReplaySession } from '@ashborn/core';
+export { normalizeTrace } from './normalize.js';
+export type { NormalizedTrace, RawTrace, RawTraceCall, TraceClass } from './normalize.js';
+export { rolesForTool } from './tool-roles.js';
