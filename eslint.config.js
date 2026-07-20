@@ -24,4 +24,11 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    // Dev-only Node scripts and config files run in Node, not the browser.
+    files: ['scripts/**/*.mjs', '*.config.js', 'eslint.config.js'],
+    languageOptions: {
+      globals: { console: 'readonly', process: 'readonly', URL: 'readonly' },
+    },
+  },
 );
