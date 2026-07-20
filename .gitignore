@@ -16,3 +16,6 @@ coverage/
 
 # throwaway spikes and experiments; never part of the build
 trial/
+
+# local planning and specs, never published
+planning/
