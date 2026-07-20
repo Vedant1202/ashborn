@@ -17,6 +17,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "gen:fixtures": "uv run --with agentdojo scripts/gen-fixtures/generate.py",
     "changeset": "changeset"
   },
   "devDependencies": {

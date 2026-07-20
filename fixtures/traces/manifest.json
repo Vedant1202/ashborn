@@ -1,0 +1,65 @@
+{
+  "suites": {
+    "banking": {
+      "counts": {
+        "attack-resisted": 144,
+        "benign": 16,
+        "compromised": 144
+      },
+      "coverage": {
+        "benign_failed": 0,
+        "benign_ok": 16,
+        "compromised_failed": 0,
+        "compromised_not_achieved": 0,
+        "compromised_ok": 144,
+        "failure_reasons": {},
+        "resisted_failed": 0,
+        "resisted_no_payload": 0,
+        "resisted_ok": 144
+      }
+    },
+    "slack": {
+      "counts": {
+        "attack-resisted": 105,
+        "benign": 21,
+        "compromised": 84
+      },
+      "coverage": {
+        "benign_failed": 0,
+        "benign_ok": 21,
+        "compromised_failed": 21,
+        "compromised_not_achieved": 0,
+        "compromised_ok": 84,
+        "failure_reasons": {
+          "NotImplementedError: This function should not be called, instead call security_from_traces": 21
+        },
+        "resisted_failed": 0,
+        "resisted_no_payload": 0,
+        "resisted_ok": 105
+      }
+    },
+    "travel": {
+      "counts": {
+        "attack-resisted": 140,
+        "benign": 20,
+        "compromised": 116
+      },
+      "coverage": {
+        "benign_failed": 0,
+        "benign_ok": 20,
+        "compromised_failed": 0,
+        "compromised_not_achieved": 24,
+        "compromised_ok": 116,
+        "failure_reasons": {},
+        "resisted_failed": 0,
+        "resisted_no_payload": 0,
+        "resisted_ok": 140
+      }
+    }
+  },
+  "totals": {
+    "attack-resisted": 389,
+    "benign": 57,
+    "compromised": 344
+  }
+}
