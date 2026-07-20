@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs';
 
+import { loadDriftPairs, scoreDriftCard, type DriftCard } from './drift.js';
 import { aucRoc, operatingPoints, recallAtMaxFalsePositiveRate } from './metrics.js';
 import type { ScoredLabel } from './metrics.js';
 import { normalizeTrace } from './normalize.js';
@@ -39,7 +40,10 @@ export interface SignalCard {
 /** The full published result. */
 export interface Scorecard {
   corpus: Record<TraceClass, number>;
+  /** Signals scored on the agent-trace corpus. */
   signals: SignalCard[];
+  /** The drift detector, scored on its own synthetic definition-pair corpus. */
+  drift: DriftCard;
 }
 
 /** Loads and normalizes every committed trace. Deterministic in file order. */
@@ -138,10 +142,11 @@ function countByClass(corpus: readonly NormalizedTrace[]): Record<TraceClass, nu
   return counts;
 }
 
-/** Builds the full scorecard over every registered signal. */
+/** Builds the full scorecard: trace-signals over the corpus, plus drift. */
 export function buildScorecard(corpus: readonly NormalizedTrace[]): Scorecard {
   return {
     corpus: countByClass(corpus),
     signals: SIGNALS.map((signal) => scoreSignalCard(signal.id, corpus)),
+    drift: scoreDriftCard(loadDriftPairs()),
   };
 }
