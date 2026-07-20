@@ -7,7 +7,13 @@ import * as api from './index.js';
  * Adding or removing an entry here must be a deliberate act accompanied by a
  * changeset, so this list is written out explicitly rather than snapshotted.
  */
-const EXPECTED_RUNTIME_EXPORTS = ['createLedger', 'recordEvent', 'resolveToolRoles', 'runDetector'];
+const EXPECTED_RUNTIME_EXPORTS = [
+  'annotateUntrustedDataEgress',
+  'createLedger',
+  'recordEvent',
+  'resolveToolRoles',
+  'runDetector',
+];
 
 describe('public API surface', () => {
   it('exports exactly the documented runtime surface', () => {

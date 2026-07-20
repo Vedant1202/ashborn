@@ -2,10 +2,11 @@
  * @ashborn/core
  *
  * Runtime security observability for AI agents. This package holds the public
- * contract (event model and findings), the per-session provenance ledger, the
- * detectors, and the OpenTelemetry emitter.
+ * contract (event model, findings and risk annotations), the per-session
+ * provenance ledger, the detectors, and the OpenTelemetry emitter.
  */
 
+export { annotateUntrustedDataEgress } from './annotations/untrusted-data-egress.js';
 export { createLedger, recordEvent } from './ledger.js';
 export { resolveToolRoles } from './roles.js';
 export { runDetector } from './guard.js';
@@ -19,6 +20,8 @@ export type {
   NormalizedMessage,
   Provenance,
   ResolvedToolRoles,
+  RiskAnnotation,
+  RiskAnnotationKind,
   SessionLedger,
   ToolCallEvent,
   ToolRole,

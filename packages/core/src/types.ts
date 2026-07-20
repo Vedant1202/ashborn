@@ -40,9 +40,15 @@ export interface ToolCallEvent {
   endTime?: number;
 }
 
-/** Stable identifiers for what a detector can report. */
-export type FindingKind =
-  'untrusted-data-egress' | 'tool-output-injection' | 'tool-definition-drift';
+/**
+ * Signals precise enough to alert on.
+ *
+ * `untrusted-data-egress` is deliberately absent. It was measured at AUC 0.712
+ * with 6.1% recall at a near-zero false-positive threshold, because legitimate
+ * agent work satisfies the trifecta by design, so it is reported as a
+ * `RiskAnnotation` instead. See docs/spikes/egress-detector-separation.md.
+ */
+export type FindingKind = 'tool-output-injection' | 'tool-definition-drift';
 
 /** A graded observation from a detector. Never a boolean verdict. */
 export interface Finding {
@@ -57,12 +63,52 @@ export interface Finding {
   };
 }
 
+/** Posture context describing a risk surface. Never an alert. */
+export type RiskAnnotationKind = 'untrusted-data-egress';
+
+/**
+ * An observation that a session opened a risk surface.
+ *
+ * This is a separate type from `Finding` rather than a severity flag on one,
+ * and it carries no `confidence`. There is deliberately nothing here to
+ * threshold: the trifecta is satisfied by ordinary agent work, so treating its
+ * presence as an alert produces noise. The type makes that mistake impossible
+ * rather than warning against it in prose.
+ */
+export interface RiskAnnotation {
+  kind: RiskAnnotationKind;
+  /** Human-readable, safe to show in a log line. */
+  reason: string;
+  /**
+   * Fraction of the transmitted payload that had been read earlier in the
+   * session. An observation reported for context, not a calibrated probability
+   * and not a basis for alerting.
+   */
+  dataFlowStrength: number;
+  evidence: {
+    untrustedEventIds: string[];
+    privateEventIds: string[];
+    egressEventIds: string[];
+  };
+}
+
 /** Accumulated per-run state that detectors reason over. Pure and serializable. */
 export interface SessionLedger {
   readonly runId: string;
   readonly untrustedEventIds: readonly string[];
   readonly privateEventIds: readonly string[];
   readonly egressEventIds: readonly string[];
+  /**
+   * Hashed tokens observed in each role's content, used to measure how much of
+   * a transmitted payload had been read earlier.
+   *
+   * Hashes are stored rather than text so a ledger dump does not read as user
+   * content. This is a reduction in incidental exposure, not a privacy
+   * guarantee: short tokens remain recoverable by dictionary search.
+   */
+  readonly untrustedTokenHashes: readonly string[];
+  readonly privateTokenHashes: readonly string[];
+  readonly egressTokenHashes: readonly string[];
 }
 
 /**

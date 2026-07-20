@@ -38,7 +38,7 @@ const throwingDetector: Detector = {
 };
 
 const nonErrorThrowingDetector: Detector = {
-  kind: 'untrusted-data-egress',
+  kind: 'tool-definition-drift',
   inspect: () => {
     throw 'a bare string';
   },
