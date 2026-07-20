@@ -51,6 +51,12 @@ importers:
         specifier: workspace:*
         version: link:../core
 
+  packages/cli:
+    dependencies:
+      '@ashborn/bench':
+        specifier: workspace:*
+        version: link:../bench
+
   packages/core: {}
 
 packages:

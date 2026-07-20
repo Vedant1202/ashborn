@@ -1,0 +1,13 @@
+Ashborn
+Copyright (c) 2026 Vedant Nandoskar
+
+This product includes evaluation traces derived from AgentDojo, a benchmark for
+prompt-injection attacks on tool-using LLM agents, by the ETH Zurich SPY Lab,
+released under the MIT License (https://github.com/ethz-spylab/agentdojo). The
+traces under fixtures/traces/ are generated from AgentDojo's task and injection
+ground truth; the derivation is described in scripts/gen-fixtures/generate.py
+and docs/spikes/agentdojo-fixture-feasibility.md.
+
+The prior art on guardrail over-defense measurement that this project builds on
+and cites — NotInject/InjecGuard, OR-Bench, XSTest, Meta CyberSecEval's False
+Refusal Rate, and BELLS-O — is credited in the README.

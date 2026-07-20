@@ -89,3 +89,22 @@ describe('buildScorecard', () => {
     expect(scorecard.corpus).toEqual({ benign: 57, 'attack-resisted': 389, compromised: 344 });
   });
 });
+
+describe('golden scorecard', () => {
+  // Pins the published headline numbers. A change here means a signal's measured
+  // separation moved, which must be deliberate and reflected in the README.
+  const scorecard = buildScorecard(loadCorpus());
+
+  it('holds the egress signal at its published AUC', () => {
+    const egress = scorecard.signals.find((signal) => signal.id === 'untrusted-data-egress');
+    expect(egress?.auc).toBeCloseTo(0.603, 3);
+    expect(egress?.recallAtLowFalsePositive).toBe(0);
+  });
+
+  it('holds drift at perfect separation on synthetic data, by construction', () => {
+    expect(scorecard.drift.auc).toBe(1);
+    expect(scorecard.drift.changeDetectionRate).toBe(1);
+    expect(scorecard.drift.falsePositiveOnUnchanged).toBe(0);
+    expect(scorecard.drift.synthetic).toBe(true);
+  });
+});
