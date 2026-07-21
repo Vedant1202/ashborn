@@ -43,6 +43,14 @@ across banking, slack and travel. Positives are the compromised class.
 **At the operating point the product actually needs:** pushing the threshold until
 the false-positive rate reaches ~0% leaves **6.1% recall**.
 
+> **Shipped signal vs. this spike.** The 0.712 above is the best of three
+> exploratory features at Checkpoint 0 ("count of private tokens in sink"). The
+> annotation that actually ships scores `dataFlowStrength` — the "fraction of
+> sink tokens tainted" idea, but with untrusted _and_ private reads as the
+> source — which re-measures at **AUC 0.603 / 0% recall** on the full corpus.
+> 0.603 is the honest number the README and the golden scorecard use; this spike
+> is kept as the point-in-time record that led to the demotion.
+
 ## Why it fails, structurally
 
 Two findings explain it, and neither is an implementation defect.
