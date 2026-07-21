@@ -2,7 +2,7 @@
  * Public contract for @ashborn/core.
  *
  * Every name in this file is part of a versioned public API. Changing a shape
- * or a string-literal value here is a breaking change and requires a changeset.
+ * or a string-literal value here is a breaking change and must be deliberate.
  */
 
 /** The part a tool plays in a data flow, used to reason about egress risk. */
@@ -27,18 +27,11 @@ export interface ToolDefinition {
   schema?: unknown;
 }
 
-/** A conversation message, normalized across agent frameworks. */
-export interface NormalizedMessage {
-  role: 'system' | 'user' | 'assistant' | 'tool';
-  content: string;
-  toolCallId?: string;
-}
-
 /**
  * A single tool invocation, normalized by an adapter.
  *
- * Content fields (`args`, `output`, `messages`) are only populated when the
- * host has explicitly opted into content capture.
+ * Content fields (`args`, `output`) are only populated when the host has
+ * explicitly opted into content capture.
  */
 export interface ToolCallEvent {
   eventId: string;
@@ -47,18 +40,16 @@ export interface ToolCallEvent {
   args?: unknown;
   output?: unknown;
   provenance: Provenance;
-  messages?: NormalizedMessage[];
   source: ToolSource;
   startTime: number;
-  endTime?: number;
 }
 
 /**
  * Signals precise enough to alert on.
  *
- * `untrusted-data-egress` is deliberately absent. It was measured at AUC 0.712
- * with 6.1% recall at a near-zero false-positive threshold, because legitimate
- * agent work satisfies the trifecta by design, so it is reported as a
+ * `untrusted-data-egress` is deliberately absent. As shipped it measures at AUC
+ * 0.603 with 0% recall at a near-zero false-positive threshold, because
+ * legitimate agent work satisfies the trifecta by design, so it is reported as a
  * `RiskAnnotation` instead. See docs/spikes/egress-detector-separation.md.
  */
 export type FindingKind = 'tool-output-injection' | 'tool-definition-drift';
@@ -66,7 +57,7 @@ export type FindingKind = 'tool-output-injection' | 'tool-definition-drift';
 /** A graded observation from a detector. Never a boolean verdict. */
 export interface Finding {
   kind: FindingKind;
-  /** Calibrated, in the range [0, 1]. */
+  /** Graded suspicion in [0, 1] — a noisy-or of the matched patterns, not a calibrated probability. */
   confidence: number;
   /** Human-readable explanation, safe to show in a log line. */
   reason: string;
@@ -122,40 +113,4 @@ export interface SessionLedger {
   readonly untrustedTokenHashes: readonly string[];
   readonly privateTokenHashes: readonly string[];
   readonly egressTokenHashes: readonly string[];
-}
-
-/**
- * A detector inspects one event against the accumulated session state.
- *
- * Structural detectors must be pure and deterministic. Implementations should
- * not throw, but the guard in `runDetector` treats throwing as a fault rather
- * than trusting that contract.
- */
-export interface Detector {
-  readonly kind: FindingKind;
-  inspect(event: ToolCallEvent, ledger: SessionLedger): Finding | null;
-}
-
-/** How a tool's roles were determined. */
-export type ToolRoleSource = 'configured' | 'inferred';
-
-/** The outcome of resolving a tool's roles, carrying how much to trust it. */
-export interface ResolvedToolRoles {
-  roles: ToolRole[];
-  source: ToolRoleSource;
-  /** 1 for explicit configuration; lower for heuristic inference. */
-  confidence: number;
-}
-
-/** A detector fault, captured rather than propagated to the host agent. */
-export interface DetectorError {
-  detector: FindingKind;
-  eventId: string;
-  message: string;
-}
-
-/** The result of running one detector under the fail-safe guard. */
-export interface DetectorResult {
-  finding: Finding | null;
-  error?: DetectorError;
 }
