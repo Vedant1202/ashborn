@@ -7,8 +7,8 @@ import type { RiskAnnotation, SessionLedger } from '../types.js';
  * outward.
  *
  * This returns a `RiskAnnotation` rather than a `Finding` on purpose. Measured
- * against 790 labeled traces the signal reached AUC 0.712, detecting 6.1% of
- * attacks at a near-zero false-positive threshold, because ordinary agent work
+ * against 790 labeled traces the signal reached AUC 0.603, catching essentially
+ * nothing at a near-zero false-positive threshold, because ordinary agent work
  * satisfies all three legs: paying a bill reads an untrusted document, touches
  * account data and sends money. The surface being open is worth showing a
  * reader. It is not worth waking one up. Full measurement and threats to
