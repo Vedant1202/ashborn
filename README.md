@@ -9,8 +9,8 @@ corpus of labeled, multi-step agent traces through candidate signals and
 publishes their full operating curves, so a claim about catching agent attacks
 can be checked instead of asserted. It is built for anyone deciding whether an
 agent-security signal actually separates attacks from ordinary work. Everything
-runs offline and deterministically; every number below reproduces from a clean
-clone with no API key. (Ashborn measures _detectors on agent traces_; how that
+runs offline and deterministically; every number the benchmark computes reproduces
+from a clean clone with no API key. (Ashborn measures _detectors on agent traces_; how that
 differs from the established work on _guards on prompts_ is spelled out under
 [What is and isn't claimed](#what-is-and-isnt-claimed).)
 

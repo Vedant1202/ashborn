@@ -66,11 +66,11 @@ are themselves untrusted-provenance content, so they would still be scanned.
 
 ## Where this leaves the three signals
 
-| signal                | status                                                                     |
-| --------------------- | -------------------------------------------------------------------------- |
-| untrusted-data-egress | measured AUC 0.712, demoted to a risk annotation at Checkpoint 0           |
-| tool-output-injection | obtainable model gives no usable high-precision threshold                  |
-| tool-definition-drift | not yet built; a hash comparison, near-zero false positive by construction |
+| signal                | status                                                                                         |
+| --------------------- | ---------------------------------------------------------------------------------------------- |
+| untrusted-data-egress | AUC 0.712 candidate at Checkpoint 0; shipped signal scores 0.603, demoted to a risk annotation |
+| tool-output-injection | obtainable model gives no usable high-precision threshold                                      |
+| tool-definition-drift | not yet built; a hash comparison, near-zero false positive by construction                     |
 
 One of three signals can carry a precision claim, and it is the simplest one.
 
