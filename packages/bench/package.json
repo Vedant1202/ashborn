@@ -1,12 +1,31 @@
 {
-  "name": "@ashborn/bench",
+  "name": "@ashborn-sec/bench",
   "version": "0.0.0",
   "description": "Offline replay harness and false-positive scorecard for Ashborn",
+  "keywords": [
+    "ai-security",
+    "agent-security",
+    "llm-security",
+    "benchmark",
+    "prompt-injection",
+    "agentdojo"
+  ],
   "license": "MIT",
+  "author": "Vedant Nandoskar",
+  "homepage": "https://github.com/Vedant1202/ashborn#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vedant1202/ashborn.git",
+    "directory": "packages/bench"
+  },
+  "bugs": {
+    "url": "https://github.com/Vedant1202/ashborn/issues"
+  },
   "type": "module",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "fixtures"
   ],
   "types": "./dist/index.d.ts",
   "exports": {
@@ -15,12 +34,18 @@
       "import": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean --sourcemap",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ashborn/core": "workspace:*"
+    "@ashborn-sec/core": "workspace:*"
   }
 }

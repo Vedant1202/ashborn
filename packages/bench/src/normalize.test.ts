@@ -127,7 +127,7 @@ describe('normalizeTrace', () => {
 });
 
 describe('normalizeTrace against a committed fixture (golden)', () => {
-  const fixtureUrl = new URL('../../../fixtures/traces/banking/compromised.json', import.meta.url);
+  const fixtureUrl = new URL('../fixtures/traces/banking/compromised.json', import.meta.url);
   const fixtures = JSON.parse(readFileSync(fixtureUrl, 'utf8')) as RawTrace[];
 
   it('normalizes the first committed compromised banking trace', () => {

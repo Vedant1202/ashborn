@@ -1,4 +1,4 @@
-import type { ToolRole } from '@ashborn/core';
+import type { ToolRole } from '@ashborn-sec/core';
 
 /**
  * The part each evaluation-suite tool plays in a data flow.

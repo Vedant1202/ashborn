@@ -7,7 +7,7 @@ import { normalizeTrace } from './normalize.js';
 import type { NormalizedTrace, RawTrace, TraceClass } from './normalize.js';
 import { SIGNALS, scoreCorpus, type Signal } from './signals.js';
 
-const FIXTURES_URL = new URL('../../../fixtures/traces/', import.meta.url);
+const FIXTURES_URL = new URL('../fixtures/traces/', import.meta.url);
 
 /** The false-positive tolerance the precision-first operating point reports at. */
 const LOW_FALSE_POSITIVE_RATE = 0.01;

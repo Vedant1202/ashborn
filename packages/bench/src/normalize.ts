@@ -1,4 +1,4 @@
-import type { Provenance, ToolCallEvent } from '@ashborn/core';
+import type { Provenance, ToolCallEvent } from '@ashborn-sec/core';
 
 import { rolesForTool } from './tool-roles.js';
 

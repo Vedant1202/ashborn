@@ -33,7 +33,7 @@ from agentdojo.functions_runtime import FunctionsRuntime
 from agentdojo.task_suite.load_suites import get_suites
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_ROOT = REPO_ROOT / "fixtures" / "traces"
+OUTPUT_ROOT = REPO_ROOT / "packages" / "bench" / "fixtures" / "traces"
 
 DEFAULT_SUITES = ["banking", "slack", "travel"]
 

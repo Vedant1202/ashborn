@@ -1,4 +1,4 @@
-import { buildScorecard, loadCorpus } from '@ashborn/bench';
+import { buildScorecard, loadCorpus } from '@ashborn-sec/bench';
 
 import { formatScorecard } from './format.js';
 

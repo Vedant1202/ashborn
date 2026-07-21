@@ -1,11 +1,11 @@
 import { readFileSync } from 'node:fs';
 
-import { createDriftBaseline, inspectDefinition, type ToolDefinition } from '@ashborn/core';
+import { createDriftBaseline, inspectDefinition, type ToolDefinition } from '@ashborn-sec/core';
 
 import { aucRoc, operatingPoints } from './metrics.js';
 import type { OperatingPoint, ScoredLabel } from './metrics.js';
 
-const PAIRS_URL = new URL('../../../fixtures/drift/pairs.json', import.meta.url);
+const PAIRS_URL = new URL('../fixtures/drift/pairs.json', import.meta.url);
 
 export type DriftClass = 'benign-bump' | 'adversarial';
 

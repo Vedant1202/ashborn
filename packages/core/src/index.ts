@@ -1,5 +1,5 @@
 /**
- * @ashborn/core
+ * @ashborn-sec/core
  *
  * The offline contract behind the Ashborn benchmark: the tool-call event model,
  * findings and risk annotations, the per-session provenance ledger, the

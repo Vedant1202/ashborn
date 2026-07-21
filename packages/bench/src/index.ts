@@ -1,5 +1,5 @@
 /**
- * @ashborn/bench
+ * @ashborn-sec/bench
  *
  * Replays the committed evaluation corpus through candidate detectors offline
  * and emits their operating curves. No network access and no live model calls.

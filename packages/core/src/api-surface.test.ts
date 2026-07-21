@@ -17,7 +17,7 @@ import type {
 } from './index.js';
 
 /**
- * The runtime exports of @ashborn/core are a versioned public contract.
+ * The runtime exports of @ashborn-sec/core are a versioned public contract.
  * Adding or removing an entry here must be a deliberate act, so this list is
  * written out explicitly rather than snapshotted.
  */
