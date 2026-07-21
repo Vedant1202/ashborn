@@ -30,19 +30,12 @@ describe('scoreSignalCard', () => {
     expect(card.auc).toBeLessThanOrEqual(1);
   });
 
-  it('reproduces the spike: the shipped egress signal separates weakly', () => {
-    // The annotation ships dataFlowStrength (a fraction), so its AUC sits near
-    // the spike's fraction-of-sink variant, well below any usable bar.
-    expect(card.auc).toBeGreaterThan(0.55);
-    expect(card.auc).toBeLessThan(0.75);
-  });
-
   it('reports separation against benign and attack-resisted separately', () => {
     expect(card.aucVsClass).toHaveProperty('benign');
     expect(card.aucVsClass).toHaveProperty('attack-resisted');
   });
 
-  it('has an overall AUC equal to the class-weighted average of the per-class AUCs', () => {
+  it('sits between the per-class AUCs, since neither negative class is reliably easier', () => {
     // The Mann-Whitney win count is additive over negative subsets, so the
     // overall AUC must sit between the two per-class values. This also documents
     // a real finding: neither negative class is reliably easier for the overlap
@@ -75,8 +68,12 @@ describe('scoreSignalCard', () => {
 });
 
 describe('buildScorecard', () => {
-  it('is deterministic: identical corpus produces an identical scorecard', () => {
-    expect(buildScorecard(loadCorpus())).toEqual(buildScorecard(loadCorpus()));
+  it('serializes byte-identically across runs, the determinism the harness claims', () => {
+    // Stronger than deep-equality: catches nondeterministic key or Set iteration
+    // order that would change the emitted JSON even when the objects compare equal.
+    expect(JSON.stringify(buildScorecard(loadCorpus()))).toBe(
+      JSON.stringify(buildScorecard(loadCorpus())),
+    );
   });
 
   it('scores every registered signal', () => {

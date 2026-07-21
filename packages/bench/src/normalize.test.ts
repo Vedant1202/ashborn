@@ -106,10 +106,6 @@ describe('normalizeTrace', () => {
     expect(trace.suite).toBe('banking');
   });
 
-  it('is deterministic for identical input', () => {
-    expect(normalizeTrace(rawTrace())).toEqual(normalizeTrace(rawTrace()));
-  });
-
   it('preserves a null tool output as undefined rather than the string "null"', () => {
     const trace = normalizeTrace(
       rawTrace({

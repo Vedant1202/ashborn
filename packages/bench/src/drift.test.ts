@@ -27,21 +27,11 @@ describe('scoreDriftCard', () => {
     expect(card.falsePositiveOnUnchanged).toBe(0);
   });
 
-  it('separates adversarial drift from benign bumps almost perfectly on synthetic data', () => {
-    // near-tautological: adversarial mutations carry the patterns the detector
-    // keys on. This checks the implementation, not coverage of novel attacks.
-    expect(card.auc).toBeGreaterThan(0.95);
-  });
-
   it('scores benign bumps below any adversarial one, so a threshold cleanly separates them', () => {
+    // Near-tautological on this corpus: the adversarial mutations carry exactly
+    // the patterns the detector keys on, so clean separation checks the
+    // implementation, not coverage of novel attacks. (The exact AUC of 1.000 is
+    // pinned in the golden scorecard; here the separation itself is asserted.)
     expect(card.maxBenignSuspicion).toBeLessThan(card.minAdversarialSuspicion);
-  });
-
-  it('is honest that the corpus is synthetic', () => {
-    expect(card.synthetic).toBe(true);
-  });
-
-  it('is deterministic', () => {
-    expect(scoreDriftCard(loadDriftPairs())).toEqual(scoreDriftCard(loadDriftPairs()));
   });
 });

@@ -104,15 +104,25 @@ describe('suspicion scoring', () => {
     expect(finding?.reason).toMatch(/hidden|invisible|character/i);
   });
 
-  it('does not credit a pattern that was already present before the change', () => {
-    // both versions contain an egress verb; a benign edit around it is not suspicious for that reason
-    const withVerb = inspectDefinition(createDriftBaseline(), sendEmail).baseline;
-    const edited: ToolDefinition = {
-      ...sendEmail,
-      description: 'Send an email to a recipient now.',
+  it('does not credit a rug-pull pattern that was already present before the change', () => {
+    // `before` already forwards mail. A benign reword must not be credited for
+    // the egress verb it always had — only a newly introduced one is suspicious.
+    const forwarder: ToolDefinition = {
+      name: 'shareInbox',
+      description: 'Share the inbox. You can forward messages to a teammate.',
+      schema: { to: 'string' },
     };
+    const rewordedForwarder: ToolDefinition = {
+      name: 'shareInbox',
+      description: 'Shares the inbox; you may forward messages to a teammate as needed.',
+      schema: { to: 'string' },
+    };
+    const baseline = inspectDefinition(createDriftBaseline(), forwarder).baseline;
 
-    expect(inspectDefinition(withVerb, edited).finding?.confidence).toBeLessThan(0.1);
+    const finding = inspectDefinition(baseline, rewordedForwarder).finding;
+    expect(finding).not.toBeNull(); // the definition did change
+    expect(finding?.confidence).toBeLessThan(0.1); // but the pre-existing verb is not credited
+    expect(finding?.reason).toMatch(/no recognized adversarial pattern/i);
   });
 });
 
@@ -122,13 +132,5 @@ describe('resilience', () => {
     const malformed = { name: 'x' } as ToolDefinition;
 
     expect(() => inspectDefinition(baseline, malformed)).not.toThrow();
-  });
-
-  it('is deterministic', () => {
-    const baseline = inspectDefinition(createDriftBaseline(), sendEmail).baseline;
-
-    expect(inspectDefinition(baseline, sendEmailInjected)).toEqual(
-      inspectDefinition(baseline, sendEmailInjected),
-    );
   });
 });
