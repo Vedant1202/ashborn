@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "A reproducible benchmark for agent-security signals, plus the tool-definition-drift detector",
+  "description": "A visibility toolkit for what AI agents access, call, and send — an open agent-security benchmark and detectors",
   "license": "MIT",
   "packageManager": "pnpm@11.8.0",
   "engines": {

@@ -1,18 +1,25 @@
+<p align="center">
+  <img src="resources/ashborn-hero.png" alt="Ashborn — see what your AI agents access, call, and send" width="860">
+</p>
+
 # Ashborn
 
-A reproducible benchmark for **agent-security signals** — detectors that try to
-tell an attack on a tool-using AI agent apart from the agent doing its job — and
-the one detector that survived it.
+**A visibility toolkit for what your AI agents access, call, and send.** Ashborn
+turns an agent's run into a checkable record — what it read, which tools it
+invoked, and what left the session — so a claim about an agent's behavior can be
+inspected rather than trusted.
 
-The output is a scorecard, not a detector to take on faith. Ashborn replays a
-corpus of labeled, multi-step agent traces through candidate signals and
-publishes their full operating curves, so a claim about catching agent attacks
-can be checked instead of asserted. It is built for anyone deciding whether an
-agent-security signal actually separates attacks from ordinary work. Everything
-runs offline and deterministically; every number the benchmark computes reproduces
-from a clean clone with no API key. (Ashborn measures _detectors on agent traces_; how that
-differs from the established work on _guards on prompts_ is spelled out under
-[What is and isn't claimed](#what-is-and-isnt-claimed).)
+Today that ships as an open, reproducible benchmark for **agent-security signals**
+— detectors that try to tell an attack on a tool-using agent apart from the agent
+doing its job — plus the one detector precise enough to ship. The output is a
+scorecard, not a detector to take on faith: Ashborn replays a corpus of labeled,
+multi-step agent traces through candidate signals and publishes their full
+operating curves, so a claim can be checked instead of asserted. Everything runs
+offline and deterministically; every number the benchmark computes reproduces from
+a clean clone with no API key. (Ashborn measures _detectors on agent traces_; how
+that differs from the established work on _guards on prompts_ is under
+[What is and isn't claimed](#what-is-and-isnt-claimed). The live-instrumentation
+layer that watches a running agent is deliberately deferred — see [Scope](#scope).)
 
 ## Results
 
