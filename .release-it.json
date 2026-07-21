@@ -1,9 +1,5 @@
 {
   "$schema": "https://unpkg.com/release-it@20/schema/release-it.json",
-  "hooks": {
-    "before:init": ["pnpm build", "pnpm test"],
-    "after:release": "pnpm -r publish --no-git-checks"
-  },
   "git": {
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
