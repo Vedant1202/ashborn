@@ -87,11 +87,6 @@ describe('untrusted-data-egress as a scoreable signal', () => {
   it('scores a trace that never opened the surface at zero', () => {
     expect(egress.score(normalizeTrace(benignBankingTrace()))).toBe(0);
   });
-
-  it('is deterministic', () => {
-    const trace = normalizeTrace(compromisedBankingTrace());
-    expect(egress.score(trace)).toBe(egress.score(trace));
-  });
 });
 
 describe('scoreCorpus', () => {

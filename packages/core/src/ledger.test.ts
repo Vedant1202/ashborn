@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { hashTokens } from './dataflow.js';
 import { createLedger, recordEvent } from './ledger.js';
 import type { ToolCallEvent } from './types.js';
 
@@ -85,6 +86,45 @@ describe('session ledger', () => {
     expect(ledger.untrustedEventIds).toEqual([]);
     expect(ledger.privateEventIds).toEqual([]);
     expect(ledger.egressEventIds).toEqual([]);
+  });
+
+  it('accumulates read-token hashes across untrusted events, deduping a shared token', () => {
+    let ledger = createLedger('run-1');
+    ledger = recordEvent(ledger, toolCallEvent({ eventId: 'r1', output: 'spotify premium' }), [
+      'untrustedSource',
+    ]);
+    ledger = recordEvent(ledger, toolCallEvent({ eventId: 'r2', output: 'spotify netflix' }), [
+      'untrustedSource',
+    ]);
+
+    // 'spotify' is shared, so it is stored once: the union is three tokens, not four.
+    expect(ledger.untrustedTokenHashes).toEqual(hashTokens(['spotify', 'premium', 'netflix']));
+  });
+
+  it('hashes a source tool from its output and an egress tool from its args', () => {
+    let ledger = createLedger('run-1');
+    ledger = recordEvent(
+      ledger,
+      toolCallEvent({
+        eventId: 'read',
+        args: { query: 'ignored' },
+        output: 'account balance twelve',
+      }),
+      ['privateData'],
+    );
+    ledger = recordEvent(
+      ledger,
+      toolCallEvent({
+        eventId: 'send',
+        args: { body: 'account balance twelve' },
+        output: 'delivered',
+      }),
+      ['egress'],
+    );
+
+    // A private read is hashed from what it returned; an egress call from what it was asked to send.
+    expect(ledger.privateTokenHashes).toEqual(hashTokens(['account', 'balance', 'twelve']));
+    expect(ledger.egressTokenHashes).toEqual(hashTokens(['account', 'balance', 'twelve']));
   });
 
   it('survives a JSON round trip without loss', () => {

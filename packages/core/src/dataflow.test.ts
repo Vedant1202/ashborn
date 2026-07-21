@@ -41,10 +41,6 @@ describe('extractTokens', () => {
 });
 
 describe('hashTokens', () => {
-  it('is stable across calls', () => {
-    expect(hashTokens(['spotify'])).toEqual(hashTokens(['spotify']));
-  });
-
   it('distinguishes different tokens', () => {
     expect(hashTokens(['spotify'])).not.toEqual(hashTokens(['netflix']));
   });

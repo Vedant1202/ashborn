@@ -50,6 +50,10 @@ describe('aucRoc', () => {
   it('is not a number when a class is empty, since AUC is undefined there', () => {
     expect(aucRoc([{ score: 0.5, positive: true }])).toBeNaN();
   });
+
+  it('is not a number when only negatives are present', () => {
+    expect(aucRoc([{ score: 0.5, positive: false }])).toBeNaN();
+  });
 });
 
 describe('recallAtMaxFalsePositiveRate', () => {
@@ -75,6 +79,10 @@ describe('recallAtMaxFalsePositiveRate', () => {
 
     expect(recallAtMaxFalsePositiveRate(negativeOnTop, 0)).toBe(0);
   });
+
+  it('is zero recall when there are no positives to catch', () => {
+    expect(recallAtMaxFalsePositiveRate([{ score: 0.5, positive: false }], 1)).toBe(0);
+  });
 });
 
 describe('operatingPoints', () => {
@@ -92,7 +100,12 @@ describe('operatingPoints', () => {
     expect(points.at(-1)).toMatchObject({ recall: 1, falsePositiveRate: 1 });
   });
 
-  it('is deterministic', () => {
-    expect(operatingPoints(INTERLEAVED)).toEqual(operatingPoints(INTERLEAVED));
+  it('returns the origin alone for an empty label set', () => {
+    expect(operatingPoints([])).toEqual([{ recall: 0, falsePositiveRate: 0 }]);
+  });
+
+  it('produces a monotonic non-decreasing recall as the threshold falls', () => {
+    const recalls = operatingPoints(INTERLEAVED).map((point) => point.recall);
+    expect(recalls).toEqual([...recalls].sort((a, b) => a - b));
   });
 });
