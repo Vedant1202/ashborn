@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const OUT_DIR = resolve(ROOT, 'fixtures', 'drift');
+const OUT_DIR = resolve(ROOT, 'packages', 'bench', 'fixtures', 'drift');
 
 const BASE_DEFINITIONS = [
   {

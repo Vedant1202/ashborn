@@ -1,4 +1,4 @@
-import type { Scorecard, SignalCard } from '@ashborn/bench';
+import type { Scorecard, SignalCard } from '@ashborn-sec/bench';
 
 function pct(value: number, digits = 1): string {
   return `${(100 * value).toFixed(digits)}%`;

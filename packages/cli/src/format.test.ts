@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import type { Scorecard } from '@ashborn/bench';
+import type { Scorecard } from '@ashborn-sec/bench';
 
 import { formatScorecard } from './format.js';
 

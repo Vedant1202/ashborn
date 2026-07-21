@@ -3,7 +3,7 @@ import {
   createLedger,
   recordEvent,
   type SessionLedger,
-} from '@ashborn/core';
+} from '@ashborn-sec/core';
 
 import type { NormalizedTrace, TraceClass } from './normalize.js';
 import { rolesForTool } from './tool-roles.js';

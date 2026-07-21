@@ -103,11 +103,11 @@ node scripts/gen-fixtures/gen_drift.mjs              # regenerate the drift corp
 
 ## Packages
 
-| Package          | Purpose                                                                             |
-| ---------------- | ----------------------------------------------------------------------------------- |
-| `@ashborn/core`  | the event model, the session ledger, the drift detector, the egress risk annotation |
-| `@ashborn/bench` | the replay harness, metrics, and scorecard                                          |
-| `@ashborn/cli`   | the `ashborn` command                                                               |
+| Package              | Purpose                                                                             |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| `@ashborn-sec/core`  | the event model, the session ledger, the drift detector, the egress risk annotation |
+| `@ashborn-sec/bench` | the replay harness, metrics, and scorecard                                          |
+| `@ashborn-sec/cli`   | the `ashborn` command                                                               |
 
 ## Scope
 

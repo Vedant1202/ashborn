@@ -17,13 +17,17 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "gen:fixtures": "uv run --with agentdojo scripts/gen-fixtures/generate.py"
+    "gen:fixtures": "uv run --with agentdojo scripts/gen-fixtures/generate.py",
+    "release": "release-it"
   },
   "devDependencies": {
     "@eslint/js": "^9",
+    "@release-it/bumper": "^7.0.6",
+    "@release-it/conventional-changelog": "^11.0.1",
     "@types/node": "^24",
     "eslint": "^9",
     "prettier": "^3",
+    "release-it": "^20.2.1",
     "tsup": "^8",
     "turbo": "^2",
     "typescript": "^5",

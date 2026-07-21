@@ -1,8 +1,26 @@
 {
-  "name": "@ashborn/cli",
+  "name": "@ashborn-sec/cli",
   "version": "0.0.0",
   "description": "Command-line interface for the Ashborn agent-security benchmark",
+  "keywords": [
+    "ai-security",
+    "agent-security",
+    "llm-security",
+    "benchmark",
+    "cli",
+    "prompt-injection"
+  ],
   "license": "MIT",
+  "author": "Vedant Nandoskar",
+  "homepage": "https://github.com/Vedant1202/ashborn#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vedant1202/ashborn.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/Vedant1202/ashborn/issues"
+  },
   "type": "module",
   "bin": {
     "ashborn": "./dist/index.js"
@@ -10,12 +28,18 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ashborn/bench": "workspace:*"
+    "@ashborn-sec/bench": "workspace:*"
   }
 }

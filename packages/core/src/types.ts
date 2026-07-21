@@ -1,5 +1,5 @@
 /**
- * Public contract for @ashborn/core.
+ * Public contract for @ashborn-sec/core.
  *
  * Every name in this file is part of a versioned public API. Changing a shape
  * or a string-literal value here is a breaking change and must be deliberate.

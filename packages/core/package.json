@@ -1,8 +1,26 @@
 {
-  "name": "@ashborn/core",
+  "name": "@ashborn-sec/core",
   "version": "0.0.0",
   "description": "Core event model, session ledger, and detectors for Ashborn",
+  "keywords": [
+    "ai-security",
+    "agent-security",
+    "llm-security",
+    "prompt-injection",
+    "tool-poisoning",
+    "mcp"
+  ],
   "license": "MIT",
+  "author": "Vedant Nandoskar",
+  "homepage": "https://github.com/Vedant1202/ashborn#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vedant1202/ashborn.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/Vedant1202/ashborn/issues"
+  },
   "type": "module",
   "sideEffects": false,
   "files": [
@@ -14,6 +32,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean --sourcemap",
