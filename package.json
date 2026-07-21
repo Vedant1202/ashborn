@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Runtime security observability for AI agents",
+  "description": "A reproducible benchmark for agent-security signals, plus the tool-definition-drift detector",
   "license": "MIT",
   "packageManager": "pnpm@11.8.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.13"
   },
   "scripts": {
     "build": "turbo run build",
@@ -17,13 +17,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "gen:fixtures": "uv run --with agentdojo scripts/gen-fixtures/generate.py",
-    "changeset": "changeset"
+    "gen:fixtures": "uv run --with agentdojo scripts/gen-fixtures/generate.py"
   },
   "devDependencies": {
-    "@changesets/cli": "^2",
-    "@commitlint/cli": "^19",
-    "@commitlint/config-conventional": "^19",
     "@eslint/js": "^9",
     "@types/node": "^24",
     "eslint": "^9",
