@@ -22,7 +22,8 @@
       "out": [
         { "file": "packages/core/package.json", "path": "version" },
         { "file": "packages/bench/package.json", "path": "version" },
-        { "file": "packages/cli/package.json", "path": "version" }
+        { "file": "packages/cli/package.json", "path": "version" },
+        { "file": "website/package.json", "path": "version" }
       ]
     }
   }
