@@ -2,7 +2,10 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+import pkg from './package.json';
+
 // This runs in Node.js — don't use client-side code here.
+// pkg.version is kept in sync with the release by @release-it/bumper.
 
 const config: Config = {
   title: 'Ashborn',
@@ -83,6 +86,11 @@ const config: Config = {
         {
           href: 'https://github.com/Vedant1202/ashborn',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          label: `v${pkg.version}`,
+          href: 'https://github.com/Vedant1202/ashborn/blob/main/CHANGELOG.md',
           position: 'right',
         },
       ],
