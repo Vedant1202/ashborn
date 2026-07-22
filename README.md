@@ -2,6 +2,20 @@
   <img src="resources/ashborn-hero.png" alt="Ashborn — see what your AI agents access, call, and send" width="860">
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/@ashborn-sec/cli"><img src="https://img.shields.io/npm/v/@ashborn-sec/cli?color=6E5DA4&label=npm" alt="npm version"></a>
+  <a href="https://github.com/Vedant1202/ashborn/actions/workflows/ci.yml"><img src="https://github.com/Vedant1202/ashborn/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/npm/l/@ashborn-sec/cli?color=6E5DA4" alt="license"></a>
+  <img src="https://img.shields.io/node/v/@ashborn-sec/cli?color=6E5DA4&label=node" alt="node">
+</p>
+
+<p align="center">
+  <a href="https://vedant1202.github.io/ashborn/"><b>Docs</b></a> ·
+  <a href="#results">Results</a> ·
+  <a href="#what-is-and-isnt-claimed">What's claimed</a> ·
+  <a href="#how-the-corpus-is-built">How it's built</a>
+</p>
+
 # Ashborn
 
 **A visibility toolkit for what your AI agents access, call, and send.** Ashborn
