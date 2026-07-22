@@ -8,6 +8,8 @@ export default tseslint.config(
       '**/node_modules/**',
       '**/.turbo/**',
       '**/coverage/**',
+      // the docs site is a separate project with its own build and lint
+      'website/**',
       // gitignored scratch space; its virtualenv ships vendored JavaScript
       'trial/**',
       '**/.venv/**',

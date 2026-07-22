@@ -1,0 +1,96 @@
+/* Ashborn brand theme for Docusaurus (Infima). */
+
+:root {
+  --ifm-color-primary: #5e3d8c;
+  --ifm-color-primary-dark: #55377e;
+  --ifm-color-primary-darker: #503476;
+  --ifm-color-primary-darkest: #422b61;
+  --ifm-color-primary-light: #67439a;
+  --ifm-color-primary-lighter: #6c47a1;
+  --ifm-color-primary-lightest: #7d55b3;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(94, 61, 140, 0.12);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #9b7fd4;
+  --ifm-color-primary-dark: #8865cb;
+  --ifm-color-primary-darker: #7f59c6;
+  --ifm-color-primary-darkest: #6740b0;
+  --ifm-color-primary-light: #ae99dd;
+  --ifm-color-primary-lighter: #b7a5e1;
+  --ifm-color-primary-lightest: #d1c6ec;
+  --ifm-background-color: #0b0a14;
+  --ifm-background-surface-color: #14121f;
+  --ifm-navbar-background-color: #0d0b17;
+  --ifm-footer-background-color: #0d0b17;
+  --docusaurus-highlighted-code-line-bg: rgba(155, 127, 212, 0.16);
+}
+
+/* Homepage hero — branded dark banner in both themes. */
+.heroBanner {
+  padding: 5rem 1rem 4rem;
+  text-align: center;
+  background: radial-gradient(1200px 400px at 50% -10%, #211a37 0%, #0b0a14 60%);
+  border-bottom: 1px solid #241c38;
+}
+.heroLogo {
+  width: 116px;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+.heroTitle {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 2.6rem;
+  letter-spacing: 0.28em;
+  padding-left: 0.28em;
+  color: #ede9fa;
+  margin: 0 0 0.75rem;
+}
+.heroTagline {
+  font-size: 1.25rem;
+  color: #b7a9dd;
+  margin: 0 auto 2rem;
+  max-width: 40rem;
+}
+.heroButtons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Results-at-a-glance cards on the homepage. */
+.results {
+  max-width: 960px;
+  margin: 3.5rem auto;
+  padding: 0 1rem;
+}
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.resultCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+  background: var(--ifm-background-surface-color);
+}
+.resultCard h3 {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+.resultAuc {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  line-height: 1.1;
+}
+.resultNote {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}

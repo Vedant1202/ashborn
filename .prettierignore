@@ -3,6 +3,9 @@ dist/
 coverage/
 .turbo/
 
+# the docs site is a separate project with its own tooling
+website/
+
 # generated, prettier must not rewrite it
 pnpm-lock.yaml
 CHANGELOG.md
