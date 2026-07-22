@@ -1,6 +1,6 @@
 {
   "name": "ashborn-monorepo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "description": "A visibility toolkit for what AI agents access, call, and send — an open agent-security benchmark and detectors",
