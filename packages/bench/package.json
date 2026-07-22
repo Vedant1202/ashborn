@@ -1,6 +1,6 @@
 {
   "name": "@ashborn-sec/bench",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Offline replay harness and false-positive scorecard for Ashborn",
   "keywords": [
     "ai-security",
