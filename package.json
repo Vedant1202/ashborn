@@ -18,7 +18,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "gen:fixtures": "uv run --with agentdojo scripts/gen-fixtures/generate.py",
-    "release": "pnpm build && pnpm test && release-it && pnpm -r publish --no-git-checks",
+    "release": "pnpm build && pnpm test && release-it",
     "release:dry": "release-it --dry-run --no-git.requireCleanWorkingDir",
     "release:version": "release-it --release-version --no-git.requireCleanWorkingDir",
     "release:changelog": "release-it --changelog --no-git.requireCleanWorkingDir",
